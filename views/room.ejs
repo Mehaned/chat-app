@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stylee.css">
+    <title>Safari Chat</title>
+</head>
+<body>
+<div class="full-page">
+    <div class="navbar">
+        <div>
+            <a href='/safari'><i class="fab fa-safari"></i> Safari Chat</a>
+        </div>
+
+        <nav>
+
+            <ul id='MenuItems'>
+                <form action="/logout?_method=DELETE" method="POST">  
+                    <li><button type="submit"class='loginbtn' onclick="document.getElementById('login-form').style.display='block'" style="width:auto;"> <i class="fas fa-sign-out-alt"></i> Logout</button></li> 
+                    <!-- <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'" style="width:auto;">Login</button></li> -->
+                </form>
+                <h1> Welocme <%= name %></h1>
+            </ul>
+        </nav>
+    </div>
+    <div class="join-container">
+        <header class="join-header">
+            <h1> Safari Chat</h1>
+        </header>
+        <main class="join-main">
+            <form action="chat.html">
+                <div class="form-control">
+                    <label for="username"></label>
+                    <input
+                        class="input-field"
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Nickname"
+                        required
+                    />
+                </div>
+                <div class="form-control">
+                    <label for="room"></label>
+                    <select name="room" id="room" class="input-field">
+                        <option value="Deutsch">Deutsch</option>
+                        <option value="English">English</option>
+                        <option value="Arabisch">Arabisch</option>
+                        <option value="Französisch">Französisch</option>
+                        <option value="Chinesisch">Chinesisch</option>
+                        <option value="Türkische ">Türkische </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Join Chat</button>
+            </form>
+        </main>
+    </div>
+</div>   
+<script src="https://kit.fontawesome.com/6644c0b496.js" crossorigin="anonymous"></script>
+</body>
+</html>

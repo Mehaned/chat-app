@@ -1,0 +1,136 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/egypt.jpg');
+	/* background-image:url('../img/egypt.jpg') ; */
+    /* background: url('https://media.cntraveler.com/photos/5ea883674e5fff00083ccef1/16:9/w_3599,h_2024,c_limit/Safari-GettyImages-143917249.jpg'); */
+    background-size: cover;
+	margin: 5px;
+}
+
+.full-page {
+    height: 100%;
+	width: 100%;
+	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(/img/egypt.jpg);
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+}
+
+.btn {
+	cursor: pointer;
+	padding: 5px 15px;
+    color: black;
+	border: 0;
+    font-size: 17px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 30px;
+    padding-top: 50px;
+}
+
+h1 {
+	color:#999;
+	margin-top: 30px;
+}
+
+.navbar h1 {
+    color: #826262;
+    background: rgba(0,0,0,0.3);
+    position: relative;
+    width: 380px;
+    text-align: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.join-container {
+	max-width: 380px;
+	height: 480px;
+	margin: 2% auto;
+	color: #fff;
+    border-radius:15px;
+    /* border: 1px solid transparent; */
+    /* box-shadow: 0px 10px 20px black; */
+	background: rgba(0,0,0,0.3);
+	position: relative;
+	overflow: hidden;
+	/* top: 10%; */
+}
+
+.join-header {
+	text-align: center;
+	padding: 20px;
+    background:transparent;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.join-main {
+	padding: 30px 40px;
+    background:transparent
+}
+
+.input-field {
+	width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+	color: #ccc;
+}
+.input-field option {
+	background:rgba(0,0,0,0.3);
+	color:#ccc
+}
+
+.join-main .btn {
+    background:#F3C693;
+}
+
+.join-main p {
+	margin-bottom: 20px;
+}
+
+.join-main .form-control {
+	margin-bottom: 20px;
+}
+
+.join-main label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.join-main input[type='text'] {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	width: 100%;
+}
+
+.join-main select {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	width: 100%;
+}
+
+.join-main .btn {
+	margin-top: 20px;
+	width: 100%;
+}

@@ -1,0 +1,35 @@
+{
+  "name": "regs",
+  "version": "1.0.0",
+  "description": "- npm init\r - npm i express ejs\r - npm i --save-dev nodemon dotenv\r - npm i bcrypt  (تخص كلمات السر)\r - npm i passport passport-local express-session express-flash يسمح لنا باستخدام اسماء وكلمات المرور لتسجيل\r - npm i method-override لعمل خروح",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js",
+    "start": "node server.js",
+    "startt": "node server2.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bad-words": "^3.0.4",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.2",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.1",
+    "mongodb": "^3.1.10",
+    "mongoose": "^6.0.8",
+    "morgan": "^1.10.0",
+    "mustache": "^4.2.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "socket.io": "^4.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.12"
+  }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script  type="text/javascript"  src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="css/main.css">
+    <title> Safari Chat</title>
+    <link rel="icon" href="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/10799/tiger-animal-face-clipart-xl.png">
+
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+          <h1><i class="fab fa-safari"></i>  Safari Chat</h1>
+          <a id="leave-btn" href="/room"  class="btn">Chat Verlassen</a>
+        </header>
+        <main class="chat-main">
+          <div id="sidebar" class="chat-sidebar">
+            <h3><i class="fas fa-comments"></i> Room Name:</h3>
+            <h2 id="room-name"></h2>
+            <h3><i class="fas fa-users"></i> Users</h3>
+            <ul id="users"></ul>
+          </div>
+          <div class="chat-messages"></div>
+        </main>
+        <div class="chat-form-container">
+          <form id="chat-form">
+            <input
+              id="msg"
+              type="text"
+              placeholder="Enter Message"
+              required
+              autocomplete="off"
+            />
+            <button class="btn"    title='Message Senden'><i class="fas fa-paper-plane"></i> Send</button>
+            <button id="emojii"    title='Emoji'  ><i class="far fa-grin-squint-tears" ></i></button>
+            <button id="location"  title='location'><i class="fas fa-map-marker-alt"></i></button>
+            <!-- <button id="video"     title ='kamera'><i class="fas fa-video"></i></button> -->
+          </form>
+        </div>
+      </div>
+<!-- 
+      <script id="message-template" type="text/html">
+        <div class="message">
+            <p>
+                <span class="message__name">{{username}}</span>
+                <span class="message__meta">{{createdAt}}</span>
+            </p>
+            <p>{{message}}</p>
+        </div>
+      </script>
+      <script id="location-message-template" type="text/html">
+        <div class="message">
+            <p>
+                <span class="message__name">{{username}}</span>
+                <span class="message__meta">{{createdAt}}</span>
+            </p>
+            <p><a href="{{url}}" target="_blank">My current location</a></p>
+        </div>
+        <script id="sidebar-template" type="text/html">
+          <h2 class="room-title">{{room}}</h2>
+          <h3 class="list-title">Users</h3>
+          <ul class="users">
+              {{#users}}
+                  <li>{{username}}</li>
+              {{/users}}
+          </ul>
+      </script>
+    </script> -->
+  
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+        integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
+        crossorigin="anonymous"
+      ></script>
+      <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/6644c0b496.js" crossorigin="anonymous"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="js/script.js"></script>
+      <script src="js/emoji.js"></script>
+</body>
+</html>
