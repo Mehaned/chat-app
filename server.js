@@ -2,8 +2,6 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
   }
 
-const path = require('path');
-const http = require('http');
 const socketio = require('socket.io');
 const {formatMessage, generateLocationMessage} = require('./utils/messages');
 const {checkAuthenticated,
@@ -17,14 +15,58 @@ getRoomUsers
 
 const express = require('express');
 const app = express();
+const path = require('path');
+const http = require('http');
+
+// require middlewares
+const bodyParser = require('body-Parser');
+const logger = require('morgan');
+
+// MongoDB Driver
+const mongoose = require('mongoose');
+
+const DB_URL = "mongodb://localhost:27017/chat-app";
+
+// Connect to MongoDB
+mongoose.connect(DB_URL);
+
+// Connection Events
+mongoose.connection.once('connected', () => {
+  console.log('Datebase connected to ' + DB_URL);
+})
+mongoose.connection.on('error' , (err) => {
+  console.log('MongoDB connection error ' + err);
+})
+mongoose.connection.once('disconnected' , () => {
+  console.log('Datebase disconnected');
+})
+
+//if Node´s process ends , close the MongoDB connection
+process.on('SIGINT' , () => {
+  mongoose.connection.close(()=> {
+      console.log('Datebase disconnected through app termination');
+      process.exit(0)
+  })
+})
+
+
+
+//Middlewares
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
 const server = http.createServer(app);
 const io = socketio(server);
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const flash = require('express-flash');
 const session = require('express-session');
+const flash = require('express-flash');
 const methodOverride = require('method-override')
 const initializePassport = require('./passport-config');
+const MongoDBStore  = require('connect-mongodb-session')(session);
+// const MongoStore = require('connect-mongo')(session);
+
 
 const users = []
 const { use } = require('passport');
@@ -41,14 +83,45 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static("public"))
 app.use("/css", express.static(__dirname+"public/css"))
 app.use("/img", express.static(__dirname+"public/img"))
-app.set('view-engine', 'ejs');
-app.use(express.urlencoded({extended:false}))
+
+//view engine setup ------------------------------------
+app.set('view engine','ejs');
+app.set(path.join(__dirname , 'views'));
+
+app.use(express.urlencoded({extended:true}))
 app.use(flash());
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    resave:false,
-    saveUninitialized: false,
+    resave:false, // don't save session if unmodified
+    saveUninitialized: false, // don't create sessions for not logged in users
+
+    // cookies settings
+    cookie: {
+      secure: false,  
+      httpOnly: false, // if true, will disallow JavaScript from reading cookie data
+      // expires: new Date(Date.now() + 60 * 60 * 1000) // 1 hour;
+    },
+
+ 
+    // store:  MongoDBStore.create({
+    //   mongoUrl: "mongodb://localhost:27017/chat-app"
+    // }),
+    // Where to store session data
+    // store: new MongoDBStore  ({
+    //   uri: 'mongodb://localhost:27017/chat-app',
+    //   // uri:mongooseConnection,
+    //   collection: 'mySessions',
+    //   resave: true,
+    //   saveUninitialized: true,
+    // mongooseConnection: mongoose.connection,
+      // ttl: 60 * 60 * 24 * 1  // 1 day
+    // })
+
+
+
+  
 }))
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -172,6 +245,6 @@ io.on('connection', socket => {
     });
   });
   
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT || 3001;
   server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 // app.listen(4444)
