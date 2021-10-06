@@ -1,2 +1,4 @@
 .env
 node_modules
+secret: process.env.SESSION_SECRET
+package-lock.json
