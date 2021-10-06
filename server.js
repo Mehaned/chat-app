@@ -3,15 +3,15 @@ if (process.env.NODE_ENV !== 'production') {
   }
 
 const socketio = require('socket.io');
-const {formatMessage, generateLocationMessage} = require('./utils/messages');
+const {formatMessage, generateLocationMessage} = require('../login-regs/utils/messages');
 const {checkAuthenticated,
-  checkNotAuthenticated} = require('./utils/checkauthenticated');
+  checkNotAuthenticated} = require('../login-regs/utils/checkauthenticated');
 const {
 userJoin,
 getCurrentUser,
 userLeave,
 getRoomUsers
-} = require('./utils/users');
+} = require('../login-regs/utils/users');
 
 const express = require('express');
 const app = express();
@@ -63,7 +63,7 @@ const passport = require('passport');
 const session = require('express-session');
 const flash = require('express-flash');
 const methodOverride = require('method-override')
-const initializePassport = require('./passport-config');
+const initializePassport = require('../login-regs/passport-config');
 const MongoDBStore  = require('connect-mongodb-session')(session);
 // const MongoStore = require('connect-mongo')(session);
 
